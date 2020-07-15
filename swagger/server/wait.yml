@@ -1,0 +1,75 @@
+swagger: "2.0"
+
+info:
+  title: "Waiting time service"
+  version: "1.0"
+
+basePath: /fake-eta
+
+produces:
+- application/json
+
+consumes:
+- application/json
+
+paths:
+  /waiting-time:
+    post:
+      operationId: calculateWaitingTime
+      parameters:
+      - name: position
+        in: body
+        required: true
+        schema: 
+          $ref: '#/definitions/position'
+      responses:
+        200:
+          description: Best waiting time
+          schema: 
+            type: integer
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+
+  /_health:
+    get:
+      operationId: health
+      responses:
+        200:
+          description: Always OK
+
+definitions:
+  position:
+    type: object
+    x-nullable: false
+    required:
+    - lat
+    - lng
+    properties:
+      lat:
+        type: number
+        format: float64
+        minimum: -90.0
+        maximum: 90.0
+        description: Latitude
+        x-nullable: false
+      lng:
+        type: number
+        format: float64
+        minimum: -180
+        maximum: 180
+        description: Longitude
+        x-nullable: false       
+  error:
+    type: object
+    properties:
+      error:
+        type: string  
+
+
+  
+    
+   
+  
+  

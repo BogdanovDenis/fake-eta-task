@@ -1,0 +1,13 @@
+cmd/
+models/
+restapi/*
+!restapi/configure_wait.go
+!restapi/implement_wait.go
+internal/car/models/
+internal/car/operations/
+internal/car/car_client.go
+internal/predict/models/
+internal/predict/operations/
+internal/predict/predict_client.go
+
+.vscode/
